@@ -22,6 +22,8 @@ public class City {
     @Column(name = "last_update")
     private LocalDateTime lastUpdate;
 
+    private boolean capital;
+
     public Long getId() {
         return id;
     }
@@ -54,6 +56,14 @@ public class City {
         this.lastUpdate = lastUpdate;
     }
 
+    public boolean isCapital() {
+        return capital;
+    }
+
+    public void setCapital(boolean capital) {
+        this.capital = capital;
+    }
+
     @Override
     public String toString() {
         final StringBuffer sb = new StringBuffer("City{");
@@ -77,6 +87,11 @@ public class City {
 
     public City lastUpdate(LocalDateTime lastUpdate) {
         this.lastUpdate = lastUpdate;
+        return this;
+    }
+
+    public City capital(boolean capital) {
+        this.capital = capital;
         return this;
     }
 }

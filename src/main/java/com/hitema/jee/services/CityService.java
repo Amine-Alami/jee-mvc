@@ -12,4 +12,6 @@ public interface CityService {
     List<City> readAll();
 
     List<City> getByName(String name);
+
+    List<City> getAllCapitals();
 }

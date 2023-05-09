@@ -71,4 +71,21 @@ class CityServiceTest {
         assertEquals(cities.get(0).getCity(), "Casablanca");
         assertEquals(cities.get(1).getCity(), "Caen");
     }
+
+    @Test
+    void getCapitalsTest() {
+        Country country = new Country();
+        City city1 = new City().city("Casablanca").country(country).capital(true);
+        City city2 = new City().city("Caen").country(country);
+        City city3 = new City().city("Paris").country(country).capital(true);
+        service.create(city1);
+        service.create(city2);
+        service.create(city3);
+
+        List<City> cities = service.getAllCapitals();
+
+        assertEquals(cities.size(), 2);
+        assertEquals(cities.get(0).getCity(), "Casablanca");
+        assertEquals(cities.get(1).getCity(), "Paris");
+    }
 }

@@ -48,5 +48,9 @@ public class CityServiceImpl implements CityService{
         return repository.findCitiesByNameLike(name);
     }
 
+    @Override
+    public List<City> getAllCapitals() {
+        return repository.findByCapital(true);
+    }
 
 }

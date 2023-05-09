@@ -14,5 +14,4 @@ public interface CountryService {
     void delete(Long id);
     List<Country> readAll();
 
-
 }
