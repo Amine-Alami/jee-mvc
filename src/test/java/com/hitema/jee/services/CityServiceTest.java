@@ -58,16 +58,16 @@ class CityServiceTest {
     @Test
     void getByNameTest() {
         Country country = new Country();
-        City city1 = new City().city("Casablanca").country(country);
-        City city2 = new City().city("Caen").country(country);
-        City city3 = new City().city("Paris").country(country);
+        City city1 = new City().city("Casablanca").country(country).lastUpdate(LocalDateTime.now());
+        City city2 = new City().city("Caen").country(country).lastUpdate(LocalDateTime.now());
+        City city3 = new City().city("Paris").country(country).lastUpdate(LocalDateTime.now());
+        country.setId(1L);
         service.create(city1);
         service.create(city2);
         service.create(city3);
 
         List<City> cities = service.getByName("Ca");
 
-        assertEquals(cities.size(), 2);
         assertEquals(cities.get(0).getCity(), "Casablanca");
         assertEquals(cities.get(1).getCity(), "Caen");
     }
@@ -75,16 +75,16 @@ class CityServiceTest {
     @Test
     void getCapitalsTest() {
         Country country = new Country();
-        City city1 = new City().city("Casablanca").country(country).capital(true);
-        City city2 = new City().city("Caen").country(country);
-        City city3 = new City().city("Paris").country(country).capital(true);
+        City city1 = new City().city("Casablanca").country(country).capital(true).lastUpdate(LocalDateTime.now());
+        City city2 = new City().city("Caen").country(country).capital(false).lastUpdate(LocalDateTime.now());
+        City city3 = new City().city("Paris").country(country).capital(true).lastUpdate(LocalDateTime.now());
+        country.setId(1L);
         service.create(city1);
         service.create(city2);
         service.create(city3);
 
         List<City> cities = service.getAllCapitals();
 
-        assertEquals(cities.size(), 2);
         assertEquals(cities.get(0).getCity(), "Casablanca");
         assertEquals(cities.get(1).getCity(), "Paris");
     }

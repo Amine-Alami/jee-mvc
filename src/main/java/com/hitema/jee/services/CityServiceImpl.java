@@ -45,7 +45,7 @@ public class CityServiceImpl implements CityService{
 
     @Override
     public List<City> getByName(String name) {
-        return repository.findCitiesByNameLike(name);
+        return repository.findCitiesByCityContainingIgnoreCase(name);
     }
 
     @Override
