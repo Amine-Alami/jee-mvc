@@ -64,4 +64,19 @@ public class City {
         sb.append('}');
         return sb.toString();
     }
+
+    public City city(String city) {
+        this.city = city;
+        return this;
+    }
+
+    public City country(Country country) {
+        this.country = country;
+        return this;
+    }
+
+    public City lastUpdate(LocalDateTime lastUpdate) {
+        this.lastUpdate = lastUpdate;
+        return this;
+    }
 }

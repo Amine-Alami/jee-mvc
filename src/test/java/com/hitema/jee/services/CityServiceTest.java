@@ -11,6 +11,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.time.LocalDateTime;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -52,5 +53,22 @@ class CityServiceTest {
 
     @Test
     void readAll() {
+    }
+
+    @Test
+    void getByNameTest() {
+        Country country = new Country();
+        City city1 = new City().city("Casablanca").country(country);
+        City city2 = new City().city("Caen").country(country);
+        City city3 = new City().city("Paris").country(country);
+        service.create(city1);
+        service.create(city2);
+        service.create(city3);
+
+        List<City> cities = service.getByName("Ca");
+
+        assertEquals(cities.size(), 2);
+        assertEquals(cities.get(0).getCity(), "Casablanca");
+        assertEquals(cities.get(1).getCity(), "Caen");
     }
 }
